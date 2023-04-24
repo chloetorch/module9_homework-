@@ -27,7 +27,7 @@ const btnNode = document.querySelector('.j-btn-request');
 function displayResult(apiData) {
    const input = document.querySelector('input');
    let pic = '';
-   if (input >= 1 && value <= 10) {
+   if (input >= 1 && input <= 10) {
       apiData.forEach(item => {
          const resultBlock = `
        <div class="result">
