@@ -22,11 +22,12 @@ function useRequest(url, callback) {
 
 const resultNode = document.querySelector('.j-result');
 const btnNode = document.querySelector('.j-btn-request');
-const value = document.querySelector('input').value;
+
 
 function displayResult(apiData) {
+   const input = document.querySelector('input');
    let pic = '';
-   if (value >= 1 && value <= 10) {
+   if (input >= 1 && value <= 10) {
       apiData.forEach(item => {
          const resultBlock = `
        <div class="result">
@@ -48,5 +49,5 @@ function displayResult(apiData) {
 }
 
 btnNode.addEventListener('click', () => {
-   useRequest(`https://picsum.photos/v2/list?limit=${value}`, displayResult);
+   useRequest(`https://picsum.photos/v2/list?limit=${input.value}`, displayResult);
 })
