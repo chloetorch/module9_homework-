@@ -23,31 +23,21 @@ function useRequest(url, callback) {
 const resultNode = document.querySelector('.j-result');
 const btnNode = document.querySelector('.j-btn-request');
 
+const input = document.querySelector('.input')
 
 function displayResult(apiData) {
-   const input = document.querySelector('input');
    let pic = '';
-   if (input >= 1 && input <= 10) {
-      apiData.forEach(item => {
-         const resultBlock = `
-       <div class="result">
-         <img
-           src="${item.download_url}"
-           class="card-image"
-         />
-         <p>${item.author}</p>
-       </div>
-     `;
-         pic = pic + resultBlock;
-      });
-
-      resultNode.innerHTML = pic;
-   } else {
-      pic = 'число вне диапазона от 1 до 10';
-      return;
-   };
+   apiData.forEach(item => {
+      let resultBlock = <div class="result"> <img src="${item.download_url}" class="card-image" /> <p>${item.author}</p> </div>;
+      pic = pic + resultBlock;
+   });
+   resultNode.innerHTML = pic;
 }
 
 btnNode.addEventListener('click', () => {
-   useRequest(`https://picsum.photos/v2/list?limit=${input.value}`, displayResult);
+   if (input.value >= 1 && input.value <= 10) {
+      useRequest(`https://picsum.photos/v2/list?limit=${input.value}`, displayResult);
+   } else {
+      resultNode.innerHTML = 'число вне диапазона от 1 до 10'
+   }
 })
