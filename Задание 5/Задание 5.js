@@ -19,9 +19,6 @@ btn.addEventListener('click', () => {
       check.textContent = 'Номер страницы и лимит вне диапазона от 1 до 10';
       return;
    } else {
-      // Делаем запрос за данными
-
-      // useRequest(`https://picsum.photos/${inputFisrt}/${inputSecond}`, displayResult);
       fetch(`https://picsum.photos/v2/list?page=${inputFisrt}&limit=${inputSecond}`)
          .then((response) => {
             return response.json()
