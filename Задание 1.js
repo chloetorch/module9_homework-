@@ -24,12 +24,18 @@ const xmlDOM = parser.parseFromString(xmlString, 'text/xml');
 
 const list = xmlDOM.querySelectorAll('student');
 
+const listStudents = []
 for (const student of list) {
-   const name = student.querySelector('name').textContent;
-   // const langAttr = name.getAttribute('lang');   (1) не добавляется атрибут при таком методе, как его нужно записать?
-   const age = student.querySelector('age').textContent; // (2) вариант Number(age.textContent) из обучения не сработал в for in, как зесь должны обозначаться цифры?
+   const name = student.querySelector('name').querySelector('first').textContent;
+   const surname = student.querySelector('name').querySelector('second').textContent;
+   const lang = student.querySelector('name').getAttribute('lang');
+   const age = Number(student.querySelector('age').textContent);
    const prof = student.querySelector('prof').textContent;
-   console.log('name: ', name, 'age: ', age, 'prof: ', prof);
+   listStudents.push({
+      'name': `${name} ${surname}`,
+      'age': age,
+      'prof': prof,
+      'lang': lang
+   })
 }
-
-// (3) при данном подходе в консоль выводится указанная информация, но не в одну строку как указано в задании, это значит, что задание сделано неверно?
+console.log(listStudents);
