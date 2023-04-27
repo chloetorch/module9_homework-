@@ -1,5 +1,5 @@
-const data =
-{
+const jsonString =
+   `{
    "list": [
       {
          "name": "Petr",
@@ -12,7 +12,6 @@ const data =
          "prof": "pilot"
       }
    ]
-};
-const dataJson = JSON.stringify(data);
-
-console.log(dataJson);
+}`;
+const data = JSON.parse(jsonString);
+console.log(data.list)
